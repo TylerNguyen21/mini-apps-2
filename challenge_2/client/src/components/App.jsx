@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import Chart from './Chart.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`https://api.coindesk.com/v1/bpi/currentprice.json?start=${this.state.start}&end=${this.state.end}`)
+    axios.get(`https://api.coindesk.com/v1/bpi/historical/close.json?start=${this.state.start}&end=${this.state.end}`)
     .then((resp) => {
       console.log(resp);
     })
@@ -24,7 +24,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        Hello
+        <Chart />
       </div>
     )
   }
