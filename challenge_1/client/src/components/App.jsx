@@ -18,46 +18,54 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    axios.get(`/events?_page=${this.state.pageNumber}&_limit=10`)
+    axios
+    .get(`/events?_page=${this.state.pageNumber}&_limit=10`)
     .then((resp) => {
-      console.log(resp)
       let info = resp.data
       let pageAmount = Math.ceil(resp.headers['x-total-count']/ resp.data.length)
       this.setState({
         events: info,
         pageCount: pageAmount
-      })
-    })
+      });
+    });
   }
 
   search() {
-    axios.get(`/events?_page=${this.state.pageNumber}&_limit=10&q=${this.state.searchBarEntry}`)
+    axios
+    .get(`/events?_page=${this.state.pageNumber}&_limit=10&q=${this.state.searchBarEntry}`)
     .then((resp) => {
       let info = resp.data
       this.setState({
         events: info
-      })
+      });
     })
+    .catch((error) => {
+      console.log('Error: ', error);
+    });
   }
 
   handleInput (e) {
     let change = {}
     change[e.target.name] = e.target.value
-    this.setState(change)
+    this.setState(change);
   }
 
   handlePageClick (e) {
     let page = e.selected + 1
     this.setState({
       pageNumber: page
-    }, () => this.search())
+    }, () => this.search());
   }
 
   render () {
     return (
       <div>
         <div className="search-container">
-          <form onSubmit={(e) => {e.preventDefault(); this.search()}}>
+          <form onSubmit={(e) => 
+          {
+            e.preventDefault(); 
+            this.search();
+          }}>
             <input type="text" name="searchBarEntry" onChange={this.handleInput}></input>
             <input type="submit" placeholder="Search"></input>
           </form>
