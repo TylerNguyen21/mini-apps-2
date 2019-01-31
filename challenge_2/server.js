@@ -12,10 +12,6 @@ app.use(parser.urlencoded({extended: true}));
 
 
 
-
-
-
-
 const PORT = 3000
 
 app.listen(PORT, () => {
