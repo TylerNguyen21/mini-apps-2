@@ -24,10 +24,12 @@
     "webpack-cli": "^3.2.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "path": "^0.12.7",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-paginate": "^6.2.1"
   }
 }
