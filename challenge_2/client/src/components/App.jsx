@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Chart from './Chart.jsx'
+import Chart from './Chart.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,12 +26,12 @@ class App extends React.Component {
         }
         if (current !== newKey) {
           current = newKey;
-          accumulator = accumulator.reduce((x, y) => (x + y)/accumulator.length);
+          accumulator = accumulator.reduce((acc, curVal) => (acc + curVal)/accumulator.length);
           monthData.push(accumulator);
           accumulator = [];
         }
       }
-      accumulator = accumulator.reduce((x, y) => (x + y)/accumulator.length);
+      accumulator = accumulator.reduce((acc, curVal) => (acc + curVal)/accumulator.length);
       monthData.push(accumulator);
       return monthData;
     })
@@ -55,7 +55,7 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          
+
         </div>
       )
     }

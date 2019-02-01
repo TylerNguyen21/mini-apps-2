@@ -43,7 +43,6 @@ class Chart extends React.Component {
   }
   
   render () {
-    console.log(this.props.data);
     return (
       <Line data={this.state.chartData}/>
     )
